@@ -6,11 +6,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-    mode: "production",
     entry: "./src/main.js",
     output: {
         filename: "main.[contentHash].js",
-        path: path.resolve(__dirname, "build"),
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -26,17 +24,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({ filename: "style.css" }),
     ],
-    optimization: {
-        minimize: false,
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    keep_classnames: true,
-                    keep_fnames: true,
-                },
-            })
-        ],
-    },
     module: {
         rules: [
             {

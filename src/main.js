@@ -55,20 +55,23 @@ function render(cardsTable) {
     container.innerHTML = ``
 
     for (const item of cardsTable) {
-        container.innerHTML += renderCard(item)
+        container.appendChild(renderCard(item))
     }
 }
 
 function renderCard(item) {
     const { isOpen, id, card_shape, card_number, isVerified } = item
-    return `<a 
-        class='${isVerified && 'verified-card'} card ${!isOpen && 'hidden'}'
-        id='${id}'
-        onclick='${ !isVerified && `handleClick(${id})` }'
-        >
-            <span>${isOpen ? card_number : ''}</span>
-        <div class='card-shape ${isOpen && card_shape}'></div>
-    </a>`
+    const card = document.createElement('a')
+    
+    card.id = id
+    card.innerHTML = `<span>${isOpen ? card_number : ''}</span>
+        <div class='card-shape ${isOpen && card_shape}'></div>`
+        
+    card.classList.add('card')
+    isVerified && card.classList.add('verified-card')
+    !isOpen && card.classList.add('hidden')
+    !isVerified && card.addEventListener('click', () => handleClick(id))
+    return card
 }
 
 function checkNumberIsSame(openedCard, openingCard) {
