@@ -4,6 +4,7 @@ const ANIMATION_DELAY = 500
 const OPENING_TIME = 2000
 
 let cardsTable = generateCardTable()
+renderRestartButton()
 render(cardsTable)
 
 function open_closeCard(id) {
@@ -72,6 +73,16 @@ function renderCard(item) {
     !isOpen && card.classList.add('hidden')
     !isVerified && card.addEventListener('click', () => handleClick(id))
     return card
+}
+
+function renderRestartButton() {
+    const panel = document.getElementById('control-panel')
+    const button = document.createElement('button')
+
+    panel.appendChild(button)
+    button.classList.add('control-btn')
+    button.innerHTML = `restart`
+    button.addEventListener('click', () => restart())
 }
 
 function checkNumberIsSame(openedCard, openingCard) {
