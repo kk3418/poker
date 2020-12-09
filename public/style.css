@@ -1,0 +1,83 @@
+:root {
+    --btn-color: rgb(181, 194, 141);
+    --hide: rgb(158, 174, 104);
+    --btn-shaddow: 1px 0.5px 5px #301212;
+}
+
+#control-panel {
+    display: flex;
+    justify-content: center;
+    padding: 2.5vh 0;
+}
+
+.control-btn {
+    border: none;
+    background-color: var(--btn-color);
+    box-shadow: var(--btn-shaddow);
+    font-size: 16px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    min-height: 75px;
+    width: 10vw;
+    margin: 1.25vh 2vw;
+    border: none;
+    box-shadow: var(--btn-shaddow);
+    background-color: var(--btn-color);
+}
+
+.back {
+    animation: turn-back ease 1s;
+    animation-direction: normal;
+}
+
+@keyframes turn-back {
+    0% {
+        transform: rotate3d(0, 1, 0, 0deg);
+    }
+    100% {
+        transform: rotate3d(0, 1, 0, 180deg);
+        background-color: var(--btn-color);
+    }
+}
+
+.hidden {
+    background-color: var(--hide);
+}
+
+.verified-card {
+    box-shadow: -1px -1px 2px #0f0f00, 0.5px 0.5px #0f0f00;
+}
+
+.card-shape {
+    height: 50px;
+    width: 10vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.spade {
+    background-image: url('./symbol/SuitSpades.svg');
+}
+
+.heart {
+    background-image: url('./symbol/Suit_Hearts.svg');
+}
+
+.diamond {
+    background-image: url('./symbol/SuitDiamonds.svg');
+}
+
+.club{
+    background-image: url('./symbol/SuitClubs.svg');
+}

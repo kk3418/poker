@@ -1,0 +1,6 @@
+node_modules
+build
+dist_no_webpack
+
+.env
+.env.test
